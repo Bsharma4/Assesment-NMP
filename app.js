@@ -9,22 +9,40 @@ const app = express();
 const { getHomePage} = require('./routes/index');
 const game = require('./routes/game');
 const game_session = require('./routes/game_session');
+const fs = require('fs'); // Import the fs module
 
 // TODO: application port should come from config file
-const port = 3000;
+const config = require('./config');
+
+// Retrieve configuration values
+const { port, dbConfig } = config;
 
 // TODO: database connection parameters should come from config file
-const db = mysql.createConnection({
-	host: 'localhost',
-	user: 'app',
-	password: 'wonderful',
-	database: 'miechallenge'})
+const db = mysql.createConnection(dbConfig);
 
 db.connect((err) => {
 	if (err) {
-		throw err;
+		console.error('Error connecting to database:', err);
+        return;
 	}
 	console.log('Connected to database');
+	// Create tables if they don't exist
+    // Read the SQL file synchronously
+	const sqlFileContent = fs.readFileSync('schema.sql', 'utf8');
+
+	// Split the file content into individual SQL statements
+	const sqlStatements = sqlFileContent.split(';').filter(statement => statement.trim() !== '');
+
+	// Execute each SQL statement separately
+	sqlStatements.forEach(sqlStatement => {
+		db.query(sqlStatement, (err, result) => {
+			if (err) {
+				console.error('Error executing SQL statement:', err);
+			} else {
+				console.log('SQL statement executed successfully:', sqlStatement);
+			}
+		});
+	});
 });
 
 global.db = db;
@@ -48,4 +66,5 @@ app.post('/add-game-session', game_session.postAdd);
 
 app.listen(port, () => {
 	console.log(`Server running on port: ${port}`);
+	console.log(`Please access it at : http://localhost:${port}/`);
 });

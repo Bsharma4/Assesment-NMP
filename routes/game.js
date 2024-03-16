@@ -11,15 +11,31 @@ module.exports = {
 	},
 	postAdd: (req, res) => {
 		// TODO db.query to insert game
+		const { name, description } = req.body;
 
-		// If all went well, go back to main screen
-		res.redirect('/');
+		// Insert game into the database
+		const query = "INSERT INTO board_games (name, description) VALUES (?, ?)";
+		db.query(query, [name, description], (err, result) => {
+			if (err) {
+				console.error(err);
+				res.redirect('/');
+			} else {
+				res.redirect('/');
+			}
+		});
 	},
 	postEdit: (req, res) => {
 		let id = req.params.id;
 
 		// TODO db.query to update game
-
-		res.redirect('/');
+		const query = "UPDATE board_games SET name=?, description=? WHERE id=?";
+		db.query(query, [name, description, id], (err, result) => {
+			if (err) {
+				console.error(err);
+				res.redirect('/');
+			} else {
+				res.redirect('/');
+			}
+		});
 	}
 };

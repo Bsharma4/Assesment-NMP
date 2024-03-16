@@ -1,5 +1,12 @@
 <%- include ('partials/header.ejs') %>
 
-TODO: Make a form for editing a game
+<!-- TODO: Make a form for editing a game -->
+<form action="/edit-game/<%= game.id %>" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="<%= game.name %>" required>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"><%= game.description %></textarea>
+    <button type="submit">Save Changes</button>
+</form>
 
 <%- include ('partials/footer.ejs') %>

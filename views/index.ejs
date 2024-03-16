@@ -1,7 +1,14 @@
 <%- include('partials/header.ejs') %>
 
 <div>
-	TODO: Display list of board games
+	<!-- TODO: Display list of board games -->
+	<h2>List of Board Games</h2>
+    <ul>
+        <!-- Iterate over board games and display them -->
+        <% games.forEach(game => { %>
+            <li><%= game.name %> - Last Session: <%= game.last_session_date %></li>
+        <% }); %>
+    </ul>
 </div>
 
 <a href="/add-game">Add Game</a>
