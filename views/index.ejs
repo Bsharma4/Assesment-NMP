@@ -1,16 +1,83 @@
 <%- include('partials/header.ejs') %>
 
+<!-- Adding theme to homepage -->
+<style>
+    body {
+        background-color: #f0f0f0; /* Set background color */
+    }
+    
+    table {
+        border-collapse: collapse; /* Collapse table borders */
+        width: 80%; /* Set table width */
+        margin: auto; /* Center align table */
+        border: 2px solid #ccc; /* Add border to table */
+    }
+    
+    th, td {
+        border: 1px solid #ddd; /* Add border to table cells */
+        padding: 8px; /* Add padding to table cells */
+        text-align: left; /* Align text to the left */
+    }
+    
+    th {
+        background-color: #f2f2f2; /* Set background color for table header */
+    }
+    
+    a {
+        text-decoration: none; /* Remove underline from links */
+        color: #007bff; /* Set link color */
+    }
+    
+    a:hover {
+        color: #0056b3; /* Change link color on hover */
+    }
+    
+    button {
+        background-color: #007bff; /* Set button background color */
+        color: white; /* Set button text color */
+        border: none; /* Remove button border */
+        padding: 8px 12px; /* Add padding to button */
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+    
+    button:hover {
+        background-color: #0056b3; /* Change button background color on hover */
+    }
+</style>
+
 <div>
-	<!-- TODO: Display list of board games -->
-	<h2>List of Board Games</h2>
-    <ul>
-        <!-- Iterate over board games and display them -->
-        <% games.forEach(game => { %>
-            <li><%= game.name %> - Last Session: <%= game.last_session_date %></li>
-        <% }); %>
-    </ul>
+    <!-- Display list of board games -->
+    <h2 style="text-align: center; position: relative;">
+        List of Board Games 
+    </h2>
+    <div style="text-align: center;">
+        <button onclick="window.location.href='/add-game'" style="display: inline-block; margin-top: 20px; margin-bottom: 20px;">Add Game</button>
+    </div>  
+    <br>
+    <div style="text-align: center;"></div>  
+    <table>
+        <thead>
+            <tr>
+                <th>Game ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Last Session Date</th>
+                <th>Edit Game</th>
+                <th> Add Session</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% games.forEach(game => { %>
+            <tr>
+                <td><%= game.id %></td>
+                <td><%= game.name %></td>
+                <td><%= game.description %></td>
+                <td><%= game.last_session_date %></td>
+                <td><button onclick="window.location.href='/edit-game/<%= game.id %>'" style="display: block; text-align: center; margin-top: 20px;">Edit Game</button></td>
+                <td><button onclick="window.location.href='/add-game-session'" style="display: block; text-align: center; margin-top: 20px;">Add Game Session</button></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    </div>
 </div>
-
-<a href="/add-game">Add Game</a>
-
-<%- include ('partials/footer.ejs') %>
