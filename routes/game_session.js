@@ -30,9 +30,9 @@ module.exports = {
             return;
         }
 
-        const { game_id, session_date } = req.body;
-        const query = "INSERT INTO game_sessions (game_id, session_date) VALUES (?, ?)";
-        db.query(query, [game_id, session_date], (err, result) => {
+        const { game_id, session_date, duration, players_count, notes } = req.body;
+        const query = "INSERT INTO game_sessions (game_id, session_date, duration, players_count, notes) VALUES (?, ?, ?, ?, ?)";
+        db.query(query, [game_id, session_date, duration, players_count, notes], (err, result) => {
             if (err) {
                 console.error(err);
                 res.redirect('/');

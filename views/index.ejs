@@ -63,7 +63,6 @@
                 <th>Description</th>
                 <th>Last Session Date</th>
                 <th>Edit Game</th>
-                <th> Add Session</th>
             </tr>
         </thead>
         <tbody>
@@ -73,11 +72,45 @@
                 <td><%= game.name %></td>
                 <td><%= game.description %></td>
                 <td><%= game.last_session_date %></td>
-                <td><button onclick="window.location.href='/edit-game/<%= game.id %>'" style="display: block; text-align: center; margin-top: 20px;">Edit Game</button></td>
-                <td><button onclick="window.location.href='/add-game-session'" style="display: block; text-align: center; margin-top: 20px;">Add Game Session</button></td>
+                <td><button onclick="window.location.href='/edit-game/<%= game.id %>'">Edit Game</button></td>
             </tr>
             <% }); %>
         </tbody>
     </table>
-    </div>
 </div>
+
+<!-- Display list of game sessions -->
+<h2 style="text-align: center; position: relative;">
+    List of Game Sessions
+</h2>
+<div style="text-align: center;">
+    <button onclick="window.location.href='/add-game-session'" style="display: inline-block; margin-top: 20px; margin-bottom: 20px;">Add Game Session</button>
+</div>
+<br>
+<div style="text-align: center;">
+<table>
+    <thead>
+        <tr>
+            <th>Session ID</th>
+            <th>Game Name</th>
+            <th>Session Date</th>
+            <th>Duration</th>
+            <th>Players Count</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% sessions.forEach(session => { %>
+        <tr>
+            <td><%= session.game_id %></td>
+            <td><%= session.name %></td>
+            <td><%= session.session_date %></td>
+            <td><%= session.duration %></td>
+            <td><%= session.players_count %></td>
+            <td><%= session.notes %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+</div>
+<%- include('partials/footer.ejs') %>
