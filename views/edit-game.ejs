@@ -2,10 +2,18 @@
 
 <!-- TODO: Make a form for editing a game -->
 <form action="/edit-game/<%= game.id %>" method="POST">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" value="<%= game.game_name %>" required>
+    <!-- Hidden input field to send game ID -->
+    <input type="hidden" name="id" value="<%= game.id %>">
+
+    <!-- Input field for game name -->
+    <label for="game_name">Name:</label>
+    <input type="text" id="game_name" name="game_name" value="<%= game.game_name %>" required>
+
+    <!-- Textarea for game description -->
     <label for="description">Description:</label>
-    <textarea id="description" name="description"><%= game.description %></textarea>
+    <textarea id="description" name="description" required><%= game.description %></textarea>
+
+    <!-- Submit button -->
     <button type="submit">Save Changes</button>
 </form>
 

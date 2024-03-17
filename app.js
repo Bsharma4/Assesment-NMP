@@ -84,6 +84,9 @@ app.get('/edit-game/:id', game.getEdit);
 app.post('/edit-game/:id', game.postEdit);
 app.get('/add-game-session', game_session.getAdd);
 app.post('/add-game-session', game_session.postAdd);
+app.get('/edit-game-session/:id', game_session.getEdit);
+app.post('/edit-game-session/:id', game_session.postEdit);
+
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);

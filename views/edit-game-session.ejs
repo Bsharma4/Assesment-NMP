@@ -1,0 +1,28 @@
+<%- include ('partials/header.ejs') %>
+
+<!-- Form for editing a game session -->
+<form action="/edit-game-session/<%= session.id %>" method="POST">
+    <!-- Hidden input field to send session ID -->
+    <input type="hidden" name="id" value="<%= session.id %>">
+
+    <!-- Input field for session date -->
+    <label for="session_date">Session Date:</label>
+    <input type="date" id="session_date" name="session_date" value="<%= session.session_date %>" required>
+
+    <!-- Input field for session duration -->
+    <label for="duration">Duration (in minutes):</label>
+    <input type="number" id="duration" name="duration" value="<%= session.duration %>" required>
+
+    <!-- Input field for number of players -->
+    <label for="players_count">Number of Players:</label>
+    <input type="number" id="players_count" name="players_count" value="<%= session.players_count %>" required>
+
+    <!-- Textarea for session notes -->
+    <label for="notes">Notes:</label>
+    <textarea id="notes" name="notes" required><%= session.notes %></textarea>
+
+    <!-- Submit button -->
+    <button type="submit">Save Changes</button>
+</form>
+
+<%- include ('partials/footer.ejs') %>
