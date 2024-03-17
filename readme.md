@@ -101,7 +101,7 @@ Screenshots of front end
 
 Quick Youtube tutorial  
 ===
-[Watch the demo video on YouTube](https://www.youtube.com/watch?)
+[Watch the quick demo video on YouTube](https://youtu.be/qeyAp2_Lw-E?si=--qrRxBh2a-BM-q1)
 
 Running the Application with Docker
 ===
