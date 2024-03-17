@@ -45,75 +45,74 @@
     }
 </style>
 
-<div>
-    <!-- Display list of board games -->
-    <h2 style="text-align: center; position: relative;">
-        List of Board Games 
-    </h2>
-    <div style="text-align: center;">
-        <button onclick="window.location.href='/add-game'" style="display: inline-block; margin-top: 20px; margin-bottom: 20px;">Add Game</button>
-    </div>  
-    <br>
-    <div style="text-align: center;"></div>  
-    <table>
-        <thead>
-            <tr>
-                <th>Game ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Last Session Date</th>
-                <th>Edit Game</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% games.forEach(game => { %>
-            <tr>
-                <td><%= game.id %></td>
-                <td><%= game.game_name %></td>
-                <td><%= game.description %></td>
-                <td><%= game.last_session_date %></td>
-                <td><button onclick="window.location.href='/edit-game/<%= game.id %>'">Edit Game</button></td>
-            </tr>
-            <% }); %>
-        </tbody>
-    </table>
-</div>
+<h1 style="text-align: center;">Weekly Board Game Night</h2>
 
-<!-- Display list of game sessions -->
-<h2 style="text-align: center; position: relative;">
-    List of Game Sessions
-</h2>
-<div style="text-align: center;">
-    <button onclick="window.location.href='/add-game-session'" style="display: inline-block; margin-top: 20px; margin-bottom: 20px;">Add Game Session</button>
-</div>
-<br>
-<div style="text-align: center;">
-<table>
-    <thead>
-        <tr>
-            <th>Session ID</th>
-            <th>Game Name</th>
-            <th>Session Date</th>
-            <th>Duration</th>
-            <th>Players Count</th>
-            <th>Notes</th>
-            <th>Edit Session</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% sessions.forEach(session => { %>
-        <tr>
-            <td><%= session.id %></td>
-            <td><%= session.game_name %></td>
-            <td><%= session.session_date %></td>
-            <td><%= session.duration %></td>
-            <td><%= session.players_count %></td>
-            <td><%= session.notes %></td>
-            <td><button onclick="window.location.href='/edit-game-session/<%= session.id %>'">Edit Session</button></td>
-        </tr>
-        <% }); %>
-    </tbody>
-</table>
+<div style="display: flex; justify-content: space-around;">
+    <!-- Display list of board games -->
+    <div style="width: 50%;">
+        <h2 style="text-align: center;">List of Board Games</h2>
+        <div style="text-align: center;">
+            <button onclick="window.location.href='/add-game'">Add Game</button>
+        </div>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Game ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Last Session Date</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% games.forEach(game => { %>
+                <tr>
+                    <td><%= game.id %></td>
+                    <td><%= game.game_name %></td>
+                    <td><%= game.description %></td>
+                    <td><%= game.last_session_date %></td>
+                    <td><button onclick="window.location.href='/edit-game/<%= game.id %>'">Edit</button></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Display list of game sessions -->
+    <div style="width: 50%;">
+        <h2 style="text-align: center;">List of Game Sessions</h2>
+        <div style="text-align: center;">
+            <button onclick="window.location.href='/add-game-session'">Add Game Session</button>
+        </div>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Session ID</th>
+                    <th>Game Name</th>
+                    <th>Session Date</th>
+                    <th>Duration</th>
+                    <th>Players Count</th>
+                    <th>Notes</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% sessions.forEach(session => { %>
+                <tr>
+                    <td><%= session.id %></td>
+                    <td><%= session.game_name %></td>
+                    <td><%= session.session_date %></td>
+                    <td><%= session.duration %></td>
+                    <td><%= session.players_count %></td>
+                    <td><%= session.notes %></td>
+                    <td><button onclick="window.location.href='/edit-game-session/<%= session.id %>'">Edit</button></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <%- include('partials/footer.ejs') %>
