@@ -75,63 +75,58 @@ Bonus points if you can make a fully automated Dockerfile container for building
 How we will test your code (change this if needed)
 =====
 
-* Reviewer will:
-
-```
-
-# if the developer does not know about or is incapable of dockerizing mysql and loading the data...
-export APPLICANT_USER=''
-git clone github.com:$APPLICANT_USER/mie-dev-challenge devchallenge_$APPLICANT_USER
-mysql -e "CREATE DATABASE devchallenge_$APPLICANT_USER"
-mysql devchallenge_$APPLICANT_USER < schema.sql
-
-
-# what we really should just have to to (if they do not do the bonus):
-npm install
-npm start
-```
-======
-
 Submission Notes
 ======
-
 Docker Setup :- This project has been dockerized to simplify the setup process. Follow the steps below to run the application using Docker.
 
-Prerequisites: Docker installed on your system.
+Prerequisites :- Docker installed on your system.
+
+Accomplished :-
+1. Database Schema and Sample Data: Created a database schema and added sample data to populate the database.
+2. Implementation of CRUD Operations and completing To do sections: Completed the implementation of CRUD operations in all JavaScript and EJS files, including routes and configuration for various features.
+3. Implemented Features: Implemented features as per the requirements, providing users with the ability to:
+    a. Add a game
+    b. Edit a game
+    c. Add a game session
+    d. Edit a game session
+    e. View the latest session of all available games on the left side of the frontend
+    f. View all game sessions in order of latest to oldest session dates on the right side of the frontend.
+4. Dockerization of the Application: Dockerized the application along with all dependencies, including the database. Follow the steps below to run the application.
+5. Fully Automated Dockerfile Container with GitHub Actions: Implemented a fully automated Dockerfile container for building and testing the application using GitHub Actions.
+* Possible Future Feature: Identified a possible feature to be added: Ability to search and display game sessions by ID.
+
+Screenshots of front end 
 ===
+
+
+Quick Youtube tutorial  
+===
+
 
 Running the Application with Docker
 ===
 
 1) Start MariaDB Docker Container:
-
 ```
 docker run --name=nmdb -d -p 3307:3306 -e MARIADB_USER=app -e MARIADB_PASSWORD=wonderful -e MARIADB_DATABASE=challenge -e MARIADB_ROOT_PASSWORD=wonderful mariadb:latest
 ```
-
 This command starts a MariaDB container named nmdb with the specified environment variables.
 
 2) Build Docker Image for the Application:
-
 ```
 docker build -t assessment-nmp .
 ```
-
 This command builds a Docker image for the application using the Dockerfile provided.
 
 3) Run the Application Container:
-
 ```
 docker run -d -p 3000:3000 --name assessment-nmp --link nmdb:db assessment-nmp
 ```
-
 This command starts a container named assessment-nmp, exposing port 3000 and linking it to the nmdb container.
 
 4) Access the Application: Once the application container is running, you can access the application at http://localhost:3000.
 
-Removing Docker Containers
-===
-If you no longer need the Docker containers, you can remove them using the following commands:
+5) Removing Docker Containers: If you no longer need the Docker containers, you can remove them using the following commands:
 
 To stop and remove the application container:
 
