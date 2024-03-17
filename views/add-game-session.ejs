@@ -6,7 +6,7 @@
     <select name="game_id" id="game_id">
         <!-- Iterate over available games and populate options -->
         <% games.forEach(game => { %>
-            <option value="<%= game.id %>"><%= game.name %></option>
+            <option value="<%= game.id %>"><%= game.game_name %></option>
         <% }); %>
     </select>
     <label for="session_date">Session Date:</label>

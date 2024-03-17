@@ -8,7 +8,7 @@ module.exports = {
 	// Function to handle adding a new board game
     postAdd: (req, res) => {
         const { name, description } = req.body;
-        const query = "INSERT INTO board_games (name, description) VALUES (?, ?)";
+        const query = "INSERT INTO board_games (game_name, description) VALUES (?, ?)";
         db.query(query, [name, description], (err, result) => {
             if (err) {
                 console.error(err);
@@ -39,7 +39,7 @@ module.exports = {
 	// Function to handle editing an existing board game
     postEdit: (req, res) => {
         const { id, name, description } = req.body;
-        const query = "UPDATE board_games SET name=?, description=? WHERE id=?";
+        const query = "UPDATE board_games SET game_name=?, description=? WHERE id=?";
         db.query(query, [name, description, id], (err, result) => {
             if (err) {
                 console.error(err);

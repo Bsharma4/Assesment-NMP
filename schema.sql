@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS board_games;
 -- Table for storing board games
 CREATE TABLE IF NOT EXISTS board_games(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    game_name VARCHAR(255) NOT NULL,
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
@@ -29,7 +29,7 @@ DELETE FROM board_games;
 DELETE FROM game_sessions;
 
 -- TODO Add sample data
-INSERT INTO board_games (name, description) VALUES
+INSERT INTO board_games (game_name, description) VALUES
     ('Settlers of Catan', 'A classic strategy board game where players collect resources and build settlements.'),
     ('Ticket to Ride', 'A railway-themed board game where players collect train cards to claim railway routes.'),
     ('Codenames', 'A word-based party game where players try to guess the words associated with their team.'),

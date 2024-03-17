@@ -78,7 +78,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.get('/', getHomePage);
-app.get('/search', searchGames); // Use searchGames directly here
 app.get('/add-game', game.getAdd);
 app.post('/add-game', game.postAdd);
 app.get('/edit-game/:id', game.getEdit);

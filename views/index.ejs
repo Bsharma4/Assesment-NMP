@@ -69,7 +69,7 @@
             <% games.forEach(game => { %>
             <tr>
                 <td><%= game.id %></td>
-                <td><%= game.name %></td>
+                <td><%= game.game_name %></td>
                 <td><%= game.description %></td>
                 <td><%= game.last_session_date %></td>
                 <td><button onclick="window.location.href='/edit-game/<%= game.id %>'">Edit Game</button></td>
@@ -102,8 +102,8 @@
     <tbody>
         <% sessions.forEach(session => { %>
         <tr>
-            <td><%= session.game_id %></td>
-            <td><%= session.name %></td>
+            <td><%= session.id %></td>
+            <td><%= session.game_name %></td>
             <td><%= session.session_date %></td>
             <td><%= session.duration %></td>
             <td><%= session.players_count %></td>
@@ -113,4 +113,5 @@
     </tbody>
 </table>
 </div>
+
 <%- include('partials/footer.ejs') %>
