@@ -90,3 +90,61 @@ mysql devchallenge_$APPLICANT_USER < schema.sql
 npm install
 npm start
 ```
+======
+
+Submission Notes
+============
+
+Docker Setup :- This project has been dockerized to simplify the setup process. Follow the steps below to run the application using Docker.
+
+Prerequisites: Docker installed on your system.
+======
+
+Running the Application with Docker
+======
+
+1) Start MariaDB Docker Container:
+
+```
+docker run --name=nmdb -d -p 3307:3306 -e MARIADB_USER=app -e MARIADB_PASSWORD=wonderful -e MARIADB_DATABASE=challenge -e MARIADB_ROOT_PASSWORD=wonderful mariadb:latest
+```
+
+This command starts a MariaDB container named nmdb with the specified environment variables.
+
+2) Build Docker Image for the Application:
+
+```
+docker build -t assessment-nmp .
+```
+
+This command builds a Docker image for the application using the Dockerfile provided.
+
+3) Run the Application Container:
+
+```
+docker run -d -p 3000:3000 --name assessment-nmp --link nmdb:db assessment-nmp
+```
+
+This command starts a container named assessment-nmp, exposing port 3000 and linking it to the nmdb container.
+
+4) Access the Application: Once the application container is running, you can access the application at http://localhost:3000.
+
+Removing Docker Containers
+======
+If you no longer need the Docker containers, you can remove them using the following commands:
+
+To stop and remove the application container:
+
+```
+docker stop assessment-nmp
+docker rm assessment-nmp
+```
+
+To stop and remove the MariaDB container:
+
+```
+docker stop nmdb
+docker rm nmdb
+```
+
+Remember to stop and remove the Docker containers when you're done testing or using the application to free up system resources.
