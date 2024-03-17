@@ -93,15 +93,15 @@ npm start
 ======
 
 Submission Notes
-============
+======
 
 Docker Setup :- This project has been dockerized to simplify the setup process. Follow the steps below to run the application using Docker.
 
 Prerequisites: Docker installed on your system.
-======
+===
 
 Running the Application with Docker
-======
+===
 
 1) Start MariaDB Docker Container:
 
@@ -130,7 +130,7 @@ This command starts a container named assessment-nmp, exposing port 3000 and lin
 4) Access the Application: Once the application container is running, you can access the application at http://localhost:3000.
 
 Removing Docker Containers
-======
+===
 If you no longer need the Docker containers, you can remove them using the following commands:
 
 To stop and remove the application container:
