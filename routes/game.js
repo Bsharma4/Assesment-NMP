@@ -5,8 +5,10 @@ module.exports = {
 			title: 'Board Games | Add game'
 		});
 	},
-	// Function to handle adding a new board game
+	
+    // Function to handle adding a new board game
     postAdd: (req, res) => {
+        // TODO db.query to insert game
         const { game_name, description } = req.body;
         const query = "INSERT INTO board_games (game_name, description) VALUES (?, ?)";
         db.query(query, [game_name, description], (err, result) => {
@@ -14,6 +16,7 @@ module.exports = {
                 console.error(err);
                 res.redirect('/');
             } else {
+                // If all went well, go back to main screen
                 res.redirect('/');
             }
         });
@@ -38,6 +41,8 @@ module.exports = {
 	
 	// Function to handle editing an existing board game
     postEdit: (req, res) => {
+        
+        // TODO db.query to update game
         const { id, game_name, description } = req.body;
         const query = "UPDATE board_games SET game_name=?, description=? WHERE id=?";
         db.query(query, [game_name, description, id], (err, result) => {

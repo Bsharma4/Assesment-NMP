@@ -23,6 +23,8 @@ module.exports = {
     },
     // Function to handle adding a new game session record associated with a game
     postAdd: (req, res) => {
+
+        // TODO db.query to insert game-playing session
         // Ensure db is defined before using it
         if (!db) {
             console.error("Database connection is not established.");

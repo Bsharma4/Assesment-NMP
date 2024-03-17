@@ -6,6 +6,8 @@ const db = mysql.createConnection(dbConfig);
 
 module.exports = {
     getHomePage: (req, res) => {
+        // TODO: Make query for games list
+        
         // Fetch list of board games and thier last played session
          const gamesQuery = "SELECT bg.id AS id, bg.game_name AS game_name, bg.description AS description, MAX(gs.session_date) AS last_session_date FROM board_games bg LEFT JOIN game_sessions gs ON bg.id = gs.game_id GROUP BY bg.id, bg.game_name, bg.description";
         // Fetch list of game sessions along with thier name in desc order of session_date 

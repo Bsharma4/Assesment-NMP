@@ -12,6 +12,7 @@ const game = require('./routes/game');
 const game_session = require('./routes/game_session');
 const config = require('./config'); // Import configuration file
 
+// TODO: application port should come from config file
 // Retrieve configuration values
 const { port, dbConfig } = config;
 
