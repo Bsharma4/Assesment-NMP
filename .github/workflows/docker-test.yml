@@ -1,0 +1,20 @@
+name: Docker Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image for testing
+        run: docker build -t assessment-nmp-test -f Dockerfile.test .
+
+      - name: Run Docker container for testing
+        run: docker run assessment-nmp-test
