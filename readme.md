@@ -85,12 +85,12 @@ Accomplished :-
 1. Database Schema and Sample Data: Created a database schema and added sample data to populate the database.
 2. Implementation of CRUD Operations and completing To do sections: Completed the implementation of CRUD operations in all JavaScript and EJS files, including routes and configuration for various features.
 3. Implemented Features: Implemented features as per the requirements, providing users with the ability to:
-    a. Add a game
-    b. Edit a game
-    c. Add a game session
-    d. Edit a game session
-    e. View the latest session of all available games on the left side of the frontend
-    f. View all game sessions in order of latest to oldest session dates on the right side of the frontend.
+    * Add a game
+    * Edit a game
+    * Add a game session
+    * Edit a game session
+    * View the latest session of all available games on the left side of the frontend
+    * View all game sessions in order of latest to oldest session dates on the right side of the frontend.
 4. Dockerization of the Application: Dockerized the application along with all dependencies, including the database. Follow the steps below to run the application.
 5. Fully Automated Dockerfile Container with GitHub Actions: Implemented a fully automated Dockerfile container for building and testing the application using GitHub Actions.
 * Possible Future Feature: Identified a possible feature to be added: Ability to search and display game sessions by ID.
